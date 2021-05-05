@@ -2,7 +2,7 @@
     <div class="border-b lg:py-3">
         <div class="flex flex-col lg:flex-row justify-between">
             <div class="flex justify-between items-center border-b lg:border-b-0 py-4 lg:py-0 px-6 lg:pr-0">
-                <router-link class="font-semibold uppercase" to="/">
+                <router-link exact-active-class="bg-transparent" class="font-semibold uppercase" to="/">
                 Financy
                 </router-link>
 
