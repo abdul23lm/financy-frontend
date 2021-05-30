@@ -30,8 +30,10 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import { reactive } from 'vue'
+import store from '@/store'
+import router from '@/router'
 
 export default {
   setup() {
@@ -42,11 +44,15 @@ export default {
 
     const login = async () => {
       // console.log('abc');
-      await axios.get('sanctum/csrf-cookie')
-      await axios.post('login', credential)
+      // await axios.get('sanctum/csrf-cookie')
+      // await axios.post('login', credential)
 
-      let response = await axios.get('api/me')
-      console.log(response.data);
+      // let response = await axios.get('api/me')
+      // console.log(response.data);
+
+      await store.dispatch("auth/login", credential)
+
+      router.replace("/")
     }
     return { login, credential }
   }

@@ -17,11 +17,11 @@
                 <div class="flex flex-col lg:flex-row lg:items-center">
                     <router-link :class="className" to="/about">About</router-link>
                 </div>
-                <!-- <div class="flex items-center">
-                    <router-link :class="className" to="/login">Abdul</router-link>
+                <div class="flex items-center" v-if="authenticated">
+                    <router-link :class="className" to="/login">{{ user.name }}</router-link>
                     <router-link :class="className" to="/register">Logout</router-link>
-                </div>                   -->
-                <div class="flex flex-col lg:flex-row lg:items-center">
+                </div>                  
+                <div class="flex flex-col lg:flex-row lg:items-center" v-else>
                     <router-link :class="className" to="/login">Login</router-link>
                     <router-link :class="className" to="/register">Register</router-link>
                 </div>                    
@@ -31,13 +31,19 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import store from '@/store'
 export default {
     setup() {
         const className = "px-2 py-2"
         const isOn = ref(false)
 
-        return { className, isOn }
+        // console.log(store.getters['auth/authenticated']);
+
+        const authenticated = computed(() => store.getters['auth/authenticated'])
+        const user = computed(() => store.getters['auth/user'])
+
+        return { className, isOn, authenticated, user }
     }
 }
 </script>
