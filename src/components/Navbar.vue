@@ -16,6 +16,7 @@
             <div :class="isOn ? 'block' : 'hidden'" class="lg:flex flex-col lg:flex-row justify-between lg:items-center w-full px-6 py-4 lg:py-0">
                 <div class="flex flex-col lg:flex-row lg:items-center">
                     <router-link :class="className" to="/about">About</router-link>
+                    <router-link :class="className" to="/finances">Finance</router-link>
                 </div>
                 <div class="flex items-center" v-if="authenticated">
                     <router-link :class="className" to="/login">{{ user.name }}</router-link>
